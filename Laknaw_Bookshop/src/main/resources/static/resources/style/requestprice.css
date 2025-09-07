@@ -1,0 +1,39 @@
+.Completed {
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: greenyellow;
+    text-align: center;
+}
+
+.pending {
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgb(241, 186, 84);
+    text-align: center;
+}
+
+
+
+.selectbtns {
+    color: #ffffff;
+    font-weight: bold;
+    background-color: #4D44B5;
+}
+
+.selectbtns:hover {
+    color: #ffffff;
+    font-weight: bolder;
+    background-color: #4D44B5;
+}
+
+#selectItems {
+    height: 235px;
+    border-radius: 15px;
+}
+
+#selectSelectedItems {
+    height: 235px;
+    border-radius: 15px;
+}

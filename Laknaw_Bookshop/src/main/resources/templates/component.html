@@ -1,0 +1,233 @@
+<head th:fragment="headerFragment">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}"></title>
+
+    <!-- link bs5 css file -->
+    <link rel="stylesheet" href="resources/bootstrap-5.2.3/css/bootstrap.min.css" />
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> -->
+
+
+    <!-- link bs5 js file -->
+    <script src="resources/bootstrap-5.2.3/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script> -->
+
+    <!-- Link sweet alert -->
+    <link rel="stylesheet" href="resources/sweetalert2-11.17.2/package/dist/sweetalert2.min.css">
+    <script src="resources/sweetalert2-11.17.2/package/dist/sweetalert2.min.js"></script>
+
+
+    <!-- lik fontawesome css file -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> -->
+    <link rel="stylesheet" href="resources/fontawesome-free-6.4.2/css/all.css" />
+
+    <!-- link common css file -->
+    <link rel="stylesheet" href="resources/style/common.css" />
+
+    <!-- link table common function js file -->
+    <script src="resources/script/tableCommonFunction.js"></script>
+
+    <!-- link common js file -->
+    <script src="resources/script/commonFunction.js"></script>
+
+    <!-- link validation fucntion js -->
+    <script src="resources/script/validationFunction.js"></script>
+
+    <!-- link jquery js file -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> -->
+    <script src="resources/script/jquery-3.7.1.js"></script>
+
+    <!-- datatable css file -->
+    <link rel="stylesheet" href="resources/datatables-1.13.6/css/jquery.dataTables.min.css" />
+    <!-- <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/css/dataTables.bootstrap.min.css" /> -->
+
+    <!-- datatable js file -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/js/jquery.dataTables.min.js"></script> -->
+    <script src="resources/datatables-1.13.6/js/jquery.dataTables.min.js"></script>
+
+    <script th:inline="javascript">
+        window.addEventListener("load", () => {
+            let logeduserPhoto = /*[[${loguserphoto}]]*/ 'loguserphoto';
+            if (logeduserPhoto != null) {
+                userImage.src = atob(logeduserPhoto)
+            }
+        })
+    </script>
+</head>
+
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top" style="background-color:  #FFFFFF; height: 90px;"
+    th:fragment="navbarFragment">
+    <div class="container-fluid">
+        <h1 class="navbar-brand text-dark" style="font-style:italic; font-weight: bold;">Welcome <span
+                th:text="${logusername}"></span>
+        </h1>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+
+            </ul>
+            <!-- <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success text-light" type="submit">Search</button>
+            </form> -->
+            <a class="navbar-brand" href="#" th:text="${loggedUserRole}">Navbar</a>
+            <i class="fa-solid fa-bell fa-lg" style="color: #888a97;"></i>
+            <button class="d-flex ms-1 btn" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseUserProfile" aria-expanded="false" aria-controls="collapseExample" style="text-decoration: none; border: none; color: #888a97;background-color: #FFFFFF; border-radius:
+                5px;" href="#">
+                <img src="resources/image/user.png" id="userImage" style="height: 30px; width: 30px;"
+                    class="rounded-circle">
+                <span class="mt-1 ms-1" th:text="${logusername }">username </span>
+                <i class=" fa-solid fa-caret-down ms-1 mt-2"></i>
+            </button>
+
+        </div>
+    </div>
+</nav>
+
+<nav class="vertical-nav navbar-dark" th:fragment="vertical-nav">
+    <!-- <div
+        style="width: 150px; height: 150px; border-radius: 50%; overflow: hidden; margin-top: 10px; margin-left: 25px;">
+        <video src="resources/image/Laknaw.mp4" style="width: 100%; height: 100%; object-fit: cover;" autoplay loop
+            muted>
+        </video>
+    </div> -->
+    <img src="resources/image/Laknaw.jpg"
+        style="height: 100px; width: 100px; border-radius: 50%;margin-top: 10px; margin-left: 45px;">
+    <!-- <h1 style="font-style: italic; color: aliceblue; margin-top: 20px; margin-left: 23px;">Laknaw</h1> -->
+    <ul class="nav flex-column" style="margin: 20px; margin-top: 50px; margin-bottom: 100px;">
+        <li class="nav-item">
+            <a href="dashboard" class="btn d-flex mb-4"
+                style="background-color: #742bde; color: #FFFFFF; border-radius: 3px;">
+                <i class="fa-solid fa-house me-2 mt-1"></i> Dashboard
+            </a>
+        </li>
+        <hr class="my-1">
+        <li class="nav-item">
+            <button class="btn d-flex mt-3" style="color: #888a97;" data-bs-toggle="collapse"
+                data-bs-target="#administrativelist">
+                <i class="fa-solid fa-user-tie me-2 mt-1" style="color: #888a97;"></i></i> Administrative
+                <i class=" fa-solid fa-caret-down ms-2 mt-1" style="color: #888a97;"></i>
+            </button>
+            <div class="collapse" id="administrativelist">
+                <a class="nav-link" id="Employee" href="employee">Employee</a>
+                <a class="nav-link" id="User" href="user">User</a>
+                <a class="nav-link" id="Privilege" href="privilege">Privilege</a>
+            </div>
+        </li>
+        <li class="nav-item">
+            <button class="btn d-flex" style="color: #888a97;" data-bs-toggle="collapse" data-bs-target="#purchaselist">
+                <i class="fa-solid fa-cart-shopping me-2 mt-1" style="color: #888a97;"></i>Purchase
+                <i class=" fa-solid fa-caret-down ms-2 mt-1" style="color: #888a97;"></i>
+            </button>
+            <div class="collapse" id="purchaselist">
+                <a class="nav-link" id="Supplier" href="supplier">Supplier</a>
+                <a class="nav-link" id="Request_Price" href="requestprice">Request Price</a>
+                <a class="nav-link" id="Price_list" href="pricelist">Price List</a>
+                <a class="nav-link" id="Purchase_Order" href="purchaseorder">Purchase Order</a>
+                <a class="nav-link" id="GRN" href="grn">GRN</a>
+                <a class="nav-link" id="Supplier_Payment" href="supplierpayment">Supplier Payment</a>
+            </div>
+        </li>
+        <li class="nav-item" id="Inventory">
+            <button class="btn d-flex" style="color: #888a97;" onclick="location.href='inventory'">
+                <i class="fa-solid fa-store me-2 mt-1" style="color: #888a97;"></i>Inventory
+            </button>
+        </li>
+        <li class="nav-item ">
+            <button class="btn d-flex" style="color: #888a97;" data-bs-toggle="collapse" data-bs-target="#saleslist"><i
+                    class="fa-solid fa-coins me-2 mt-1" style="color: #888a97;"></i>Sales
+                <i class=" fa-solid fa-caret-down ms-2 mt-1" style="color: #888a97;"></i>
+            </button>
+            <div class="collapse" id="saleslist">
+                <a class="nav-link" id="Item" href="item">Item</a>
+                <a class="nav-link" id="Invoice" href="invoice">Invoice</a>
+                <a class="nav-link" id="Customer" href="customer">Customer</a>
+            </div>
+        </li>
+        <li class="nav-item ">
+            <button class="btn d-flex mb-3" style="color: #888a97;" data-bs-toggle="collapse"
+                data-bs-target="#reportslist"><i class="fa-solid fa-file-invoice me-2 mt-1"
+                    style="color: #888a97;"></i>Reports
+                <i class=" fa-solid fa-caret-down ms-2 mt-1" style="color: #888a97;"></i>
+            </button>
+            <div class="collapse" id="reportslist">
+                <a class="nav-link" href="userreport">User Report</a>
+                <a class="nav-link" href="purchaseorderreport">Purchase order Report</a>
+                <a class="nav-link" href="salesreport">Sales Report</a>
+            </div>
+        </li>
+        <hr class="my-1">
+        <li class="nav-item ">
+            <button class="btn d-flex mt-3" style="color: #888a97;">
+                <i class="fa-solid fa-gear me-2 mt-1"></i>Settings
+            </button>
+        </li>
+    </ul>
+</nav>
+
+<style th:fragment="vertical-nav-style">
+    body {
+        padding-left: 200px;
+        /* Adjust this value according to the width of the navbar */
+    }
+
+    .nav-item {
+        color: #888a97;
+        margin-bottom: 10px;
+    }
+
+    .vertical-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 200px;
+        background: #FFFFFF;
+        /* Adjust the width as needed */
+        /* background-color: #4D44B5; */
+        ;
+    }
+
+    .vertical-nav .nav-link {
+        color: #888a97;
+    }
+
+    .vertical-nav .nav-link:hover {
+        /* background-color: #2D2D2E; */
+        border-radius: 10px;
+        background-color: #742bde;
+        color: #FFFFFF;
+
+    }
+
+    .navbar {
+        margin-left: 200px;
+        width: calc(100% - 200px);
+    }
+</style>
+
+<div class="collapse  position-absolute end-0 mt-5" th:fragment="userProfileChangeModal" id="collapseUserProfile"
+    style="min-width: 200px; z-index: 1055; top: 40px;">
+
+    <div class="card card-body shadow-sm">
+        <a href="changeuserprofile" class="text-decoration-none mb-2">View Profile</a>
+        <a href="#" class="text-decoration-none mb-2">Settings</a>
+        <hr class="my-1">
+        <a href="logout" class="text-decoration-none text-danger">Logout</a>
+    </div>
+</div>
+
+
+
+
+<!-- onkeydown="return false" -> prevent any keyboard input -->

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="~{component::headerFragment}"></head>
+
+<head>
+
+  <title th:text="${title}"></title>
+  <!-- link Employee css file -->
+  <link rel="stylesheet" href="resources/style/employee.css">
+
+  <!-- link js file -->
+  <script src="controllerjs/employee.js"></script>
+  <style th:replace="~{component::vertical-nav-style}"></style>
+</head>
+
+<body style="background-color:  #E6EBEE">
+
+  <nav th:replace="~{component::vertical-nav}"></nav>
+  <nav th:replace="~{component::navbarFragment}"></nav>
+
+  <nav aria-label="breadcrumb" class="text-center text-dark" style="margin-top: 100px;margin-left: 50px;">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+      <li class="breadcrumb-item active" style="background-color:  #E6EBEE" aria-current="page">Employee</li>
+    </ol>
+  </nav>
+  <div class="container-fluid mt-2">
+    <div class="card-body">
+      <div class="row m-3">
+        <div class="text-center text-dark">
+          <h2>Employee Management</h2>
+        </div>
+      </div>
+
+      <!-- form area start -->
+      <div class="row ">
+        <div class="col-1"></div>
+        <div class="col-10">
+          <button class="btn btnHover" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample"
+            aria-expanded="false" aria-controls="collapseWidthExample">
+            <i class="fa-solid fa-plus me-2"></i>Add new Details
+          </button>
+          <button class="btn btnHover" onclick="printTableBtn(employeeTable,'Employee Details')"><i
+              class="fa-solid fa-print me-2"></i>Print</button>
+
+
+
+          <div style="min-height: 10px">
+            <div class="collapse collapse-horizontal" id="collapseWidthExample">
+              <div class="card card-body  text-dark" style="width: 1000px">
+                <form id="formEmployee" onsubmit="return false">
+                  <!-- Full name,caliing name -->
+                  <div class="row">
+                    <div class="col-6">
+                      <label for="" class="col-3 col-form-label fw-bold">
+                        Full Name : <span class="text-danger">*</span>
+                      </label>
+                      <div class="col-9">
+                        <input type="text" class="form-control" id="textFullName" placeholder="Enter Your Name" required
+                          onkeyup="fullNameValidator(this);" />
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <label for="" class="col-3 col-form-label fw-bold">
+                        Calling Name : <span class="text-danger">*</span>
+                      </label>
+                      <div class="col-9">
+                        <input type="text" class="form-control" id="textCallingName"
+                          placeholder="Enter Your Calling Name" required
+                          onkeyup="textValidator(this,'^([A-Z][a-z]{2,20})$','employee','callingname')"
+                          list="fullNameParts" />
+                        <datalist id="fullNameParts"></datalist>
+                      </div>
+                    </div>
+                  </div><br>
+                  <!-- nic,image  -->
+                  <div class="row">
+                    <div class="col-6">
+                      <label for="" class="col-3 col-form-label fw-bold">
+                        NIC : <span class="text-danger">*</span>
+                      </label>
+                      <div class="col-9">
+                        <input type="text" class="form-control" id="textNic" placeholder="Enter Your NIC" required
+                          onkeyup="nicValidator(this)" />
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <label for="" class="col-3 col-form-label fw-bold">
+                        Image :
+                      </label>
+                      <button class="btn btn-secondary" id="btnSelectImage" onclick="empphoto.click()">Select
+                        Image</button>
+                      <button class="btn btn-secondary" id="btnClearImage">Clear Image</button>
+                      <img src="resources/image/user.png"
+                        style="height: 50px; width: 50px; border-radius: 20px;border: 1px solid black;" alt="ss"
+                        id="imgEmpPriview">
+                      <input type="text" disabled class="form-control" id="textEmpPhoto">
+                      <input type="file" class="form-control d-none" id="empphoto"
+                        onchange="FileValidator(this,'employee','emp_photo','imgEmpPriview')" />
+
+                    </div>
+                  </div><br>
+                  <!-- Gender , Dob -->
+                  <div class="row">
+                    <div class="col-6">
+                      <label for="" class="col-4 col-form-label fw-bold">
+                        Gender : <span class="text-danger">*</span>
+                      </label>
+                      <select id="selectGender" class="form-select col-8"
+                        onchange="selectStaticValidator(this,'employee','gender')">
+                        <option value="" selected disabled>Select Your Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                      </select>
+                    </div>
+                    <div class="col-6">
+                      <label for="" class="col-4 col-form-label fw-bold">
+                        DOB : <span class="text-danger">*</span>
+                      </label>
+                      <div class="col-8">
+                        <input type="date" id="selectDate" class="form-control"
+                          onchange="textValidator(this,'^[0-9]{4}[-][0-9]{2}[-][0-9]{2}$','employee','dob')">
+                      </div>
+                    </div>
+                  </div><br>
+                  <!-- email , mobile , land -->
+                  <div class="row">
+                    <div class="col-4">
+                      <label for="" class="col-form-label fw-bold">
+                        Email : <span class="text-danger">*</span>
+                      </label>
+                      <div class="input-group">
+                        <span class="input-group-text">
+                          <i class="fa-solid fa-envelope fa-xs"></i>
+                        </span>
+                        <input type="email" id="textEmail" class="form-control " required placeholder=" Enter Email"
+                          onkeyup="textValidator(this,'^[A-Za-z0-9\\_\\-]{8,20}[@][a-z]{3,10}[.][a-z]{2,3}$','employee','email')">
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <label for="" class="form-label fw-bold">
+                        Mobile number : <span class="text-danger">*</span>
+                      </label>
+                      <div class="input-group">
+                        <span class="input-group-text">
+                          <i class="fa-solid fa-mobile-retro"></i>
+                        </span>
+                        <input type="number" id="textmobile" class="form-control " required
+                          onkeyup="textValidator(this,'^[0][7][01245678][0-9]{7}$','employee','mobile')"
+                          placeholder="Enter Mobile Number">
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <label for="" class="col-4 col-form-label fw-bold">
+                        Land number :
+                      </label>
+                      <div class="input-group">
+                        <span class="input-group-text">
+                          <i class="fa-solid fa-phone"></i>
+                        </span>
+                        <input type="number" id="textland" class="form-control " placeholder="Enter Land Number">
+                      </div>
+                    </div>
+                  </div><br>
+
+                  <!-- Address , Note -->
+                  <div class="row">
+                    <div class="col-6">
+                      <label for="" class="col-6 col-form-label fw-bold">
+                        Address : <span class="text-danger">*</span>
+                      </label>
+                      <div class="input-group">
+                        <span class="input-group-text">
+                          <i class="fa-solid fa-location-dot"></i>
+                        </span>
+                        <input type="text" id="textAddress" class="form-control" placeholder="Enter Your Address"
+                          required
+                          onkeyup="textValidator(this, '^([0-9\\/\\-\\sA-Za-z]{1,20}[\\,][\\s])+([A-Z][a-z0-9\\-]{1,20}[.])$','employee','address')">
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <label for="" class="col-6 col-form-label fw-bold">
+                        Note :
+                      </label>
+                      <div class="input-group">
+                        <span class="input-group-text">
+                          <i class="fa-regular fa-comments"></i>
+                        </span>
+                        <textarea id="textNote" class="form-control" placeholder="Add a comment"></textarea>
+                      </div>
+                    </div>
+                  </div><br>
+
+                  <!-- status , designation , civilstatus -->
+                  <div class="row">
+                    <label for="" class="col-4 col-form-label fw-bold">
+                      Status : <span class="text-danger">*</span>
+                    </label>
+                    <label for="" class="col-4 col-form-label fw-bold">
+                      Designation : <span class="text-danger">*</span>
+                    </label>
+                    <label for="" class="col-4 col-form-label fw-bold">
+                      Civi status : <span class="text-danger">*</span>
+                    </label>
+                  </div>
+                  <div class="row">
+                    <div class="col-4">
+                      <select id="selectStatus" class="form-select"
+                        onchange="selectDynamicValidator(this,'employee','employeestatus_id')">
+                        <option value="" selected disabled>Select your status</option>
+                      </select>
+                    </div>
+                    <div class="col-4">
+                      <select id="selectDestination" class="form-select"
+                        onchange="selectDynamicValidator(this,'employee','designation_id')">
+                        <option value="" selected disabled>Select your destination</option>
+                      </select>
+                    </div>
+                    <div class="col-4">
+                      <select id="selectCivilStatus" class="form-select"
+                        onchange="selectStaticValidator(this,'employee','civilstatus')">
+                        <option value="" selected disabled>Select civil status</option>
+                        <option value="Married">Married</option>
+                        <option value="Single">Single</option>
+                      </select>
+                    </div>
+                  </div>
+                  <br><br>
+                  <div class="row">
+                    <div class="col-3">
+
+                      <button class="btn btn-success btnHover" onclick="refreshEmployeeForm()"><span><i
+                            class="fa-solid fa-broom"></i></span>
+                        Clear</button>
+                    </div>
+                    <div class="col-3">
+
+                    </div>
+                    <div class="col-3">
+                      <button class="btn btn-success btnHover" id="btnUpdate" onclick="updateEmployee()"><span><i
+                            class="fa-solid fa-pen"></i></span>
+                        Update</button>
+                    </div>
+                    <div class="col-3">
+
+                      <button type="submit" class="btn btn-success btnHover" id="btnAdd"
+                        onclick="employeeSubmitButton(employee)"><span><i class="fa-solid fa-plus"></i></span>
+                        Add</button>
+                    </div>
+                  </div>
+                </form>
+                <!-- form area end -->
+              </div>
+            </div>
+          </div><br><br>
+          <!-- table area start table-bordered bg-light table-striped-->
+          <!-- <div class="card card-body"> -->
+          <table class="table bg-light" id="employeeTable" style="border-radius: 2px;">
+            <thead>
+              <tr>
+                <th>No/Index</th>
+                <th>Full Name</th>
+                <th>NIC</th>
+                <th>Photo</th>
+                <th>Email</th>
+                <th>Mobile</th>
+                <th>Designation</th>
+                <th>Status</th>
+                <th class="modify-button">Modify</th>
+              </tr>
+            </thead>
+            <tbody class="table-body text-dark">
+            </tbody>
+          </table>
+          <!-- </div> -->
+        </div>
+        <div class="col-1"></div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+  <!-- Print option -->
+  <div class="modal" id="printModalEmployee">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>View Employee Detail</h2>
+          <button class="btn btn-close position-absolute top-0 end-0 m-3" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <table id="printEmployeeData" class="table table-hover">
+            <tr>
+              <th>Fullname</th>
+              <td id="tdFullName"></td>
+            </tr>
+            <tr>
+              <th>Nic</th>
+              <td id="tdNic"></td>
+            </tr>
+            <tr>
+              <th>Email</th>
+              <td id="tdEmail"></td>
+            </tr>
+            <tr>
+              <th>Gender</th>
+              <td id="tdGender"></td>
+            </tr>
+            <tr>
+              <th>Mobile</th>
+              <td id="tdMobile"></td>
+            </tr>
+            <tr>
+              <th>Designation</th>
+              <td id="tdDesignation"></td>
+            </tr>
+            <tr>
+              <th>Status</th>
+              <td id="tdStatus"></td>
+            </tr>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-info" onclick="printDataBtn(printEmployeeData)">Print</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div th:replace="~{component::userProfileChangeModal}"></div>
+
+</body>
+
+</html>

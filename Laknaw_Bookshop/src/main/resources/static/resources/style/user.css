@@ -1,0 +1,37 @@
+/* .btn-style {
+    background-color: #008080;
+    color: #ffffff;
+}
+
+.btn-style:hover {
+    background-color: #ffffff;
+    color: #008080;
+} */
+
+.user-card {
+    background-color: #ffffff;
+    border-radius: 4px;
+}
+
+
+
+.user-active {
+    text-align: center;
+    font-weight: bold;
+    background-color: greenyellow;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.user-inactive {
+    text-align: center;
+    font-weight: bold;
+    background-color: rgb(237, 63, 77);
+    border-radius: 10px;
+    padding: 5px;
+}
+
+a {
+    color: #6c757d;
+    text-decoration: underline;
+}

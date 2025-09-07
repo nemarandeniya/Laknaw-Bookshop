@@ -1,0 +1,23 @@
+.status-received {
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgb(241, 186, 84);
+    text-align: center;
+}
+
+.status-partiallyCompleted {
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgb(160, 233, 52);
+    text-align: center;
+}
+
+.status-completed {
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgb(61, 247, 10);
+    text-align: center;
+}

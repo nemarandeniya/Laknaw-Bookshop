@@ -1,0 +1,15 @@
+.status-active {
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: greenyellow;
+    text-align: center;
+}
+
+.status-inactive {
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgb(237, 63, 77);
+    text-align: center;
+}

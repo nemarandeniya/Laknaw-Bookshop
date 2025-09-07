@@ -1,0 +1,44 @@
+.supplierBtn {
+    border: 1px solid #4D44B5;
+    background-color: white;
+    color: #4D44B5;
+}
+
+.supplierBtn:hover {
+    background-color: aliceblue;
+    color: #4D44B5;
+    border: 1px solid #4D44B5;
+}
+
+
+
+
+
+.card-body {
+    padding-left: 10px;
+}
+
+#formId {
+    margin-left: 20px;
+}
+
+.status-working {
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: greenyellow;
+    text-align: center;
+}
+
+.status-notworking {
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgb(237, 63, 77);
+    text-align: center;
+}
+
+a {
+    color: #6c757d;
+    text-decoration: underline;
+}

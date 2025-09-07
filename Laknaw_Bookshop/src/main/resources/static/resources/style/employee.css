@@ -1,0 +1,36 @@
+.status-working {
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: greenyellow;
+    text-align: center;
+}
+
+.status-resign {
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgb(241, 186, 84);
+    text-align: center;
+}
+
+.status-delete {
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgb(237, 63, 77);
+    text-align: center;
+}
+
+.status-other {
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: skyblue;
+    text-align: center;
+}
+
+a {
+    color: #6c757d;
+    text-decoration: underline;
+}

@@ -1,0 +1,27 @@
+fieldset {
+    border: 2px solid #dedede;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+legend {
+    color: rgba(93, 96, 96, 1);
+    margin-bottom: 1.5rem;
+}
+
+.Completed {
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: greenyellow;
+    text-align: center;
+}
+
+.pending {
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgb(241, 186, 84);
+    text-align: center;
+}

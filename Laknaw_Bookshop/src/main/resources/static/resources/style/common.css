@@ -1,0 +1,89 @@
+/*
+ body {
+     background-color: rgb(9, 118, 172);
+ }
+
+.title-header-div{
+    background-color: rgba(121, 240, 175, 0.363);
+   
+} */
+
+.btnHover {
+    background: #742bde;
+    color: #FFFFFF;
+    border-radius: 10px;
+}
+
+/* .btnHover {
+    background-color: #FFFFFF;
+    color: #202123;
+    border-color: #202123;
+} */
+
+.btnHover:hover {
+    background: #742bde;
+    color: #FFFFFF;
+    border-radius: 10px;
+}
+
+/* .supplierBtn {
+    border: 1px solid #4D44B5;
+    background-color: white;
+    color: #4D44B5;
+}
+
+.supplierBtn:hover {
+    background-color: aliceblue;
+    color: #4D44B5;
+    border: 1px solid #4D44B5;
+} */
+
+.active {
+    text-align: center;
+    font-weight: bold;
+    background-color: greenyellow;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.inactive {
+    text-align: center;
+    font-weight: bold;
+    background-color: rgb(237, 63, 77);
+    border-radius: 10px;
+    padding: 5px;
+}
+
+fieldset {
+    border: 2px solid #dedede;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+legend {
+    color: rgba(93, 96, 96, 1);
+    margin-bottom: 1.5rem;
+}
+
+#selectItems {
+    height: 235px;
+    border-radius: 15px;
+}
+
+#selectSelectedItems {
+    height: 235px;
+    border-radius: 15px;
+}
+
+.selectbtns {
+    color: #ffffff;
+    font-weight: bold;
+    background-color: #4D44B5;
+}
+
+.selectbtns:hover {
+    color: #ffffff;
+    font-weight: bolder;
+    background-color: #4D44B5;
+}

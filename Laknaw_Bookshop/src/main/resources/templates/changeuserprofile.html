@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="~{component::headerFragment}"></head>
+
+<head>
+
+    <title th:text="${title}"></title>
+    <!-- link Employee css file -->
+    <link rel="stylesheet" href="resources/style/changeuser.css">
+
+    <!-- link js file -->
+    <script src="controllerjs/changeuser.js"></script>
+    <style th:replace="~{component::vertical-nav-style}"></style>
+</head>
+
+<body style="background-color:  #E6EBEE">
+
+    <nav th:replace="~{component::vertical-nav}"></nav>
+    <nav th:replace="~{component::navbarFragment}"></nav>
+
+    <nav aria-label="breadcrumb" class="text-center text-dark" style="margin-top: 100px;margin-left: 50px;">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+            <li class="breadcrumb-item active" style="background-color:  #E6EBEE" aria-current="page">Change User
+                Profile</li>
+        </ol>
+    </nav>
+    <div class="container-fluid mt-2">
+        <div class="card-body" style="width: 800px; background-color: #ffffff; margin-left: 150px; padding:40px">
+            <div class="">
+                <div class="row m-3">
+                    <div class="text-center text-dark">
+                        <h2>Change User profile </h2>
+                    </div>
+                </div><br>
+                <div class="row mt-2">
+                    <div class="col-2"></div>
+                    <div class="col-8">
+                        <div class="card">
+                            <div class="card-body form-area">
+                                <table class="table">
+                                    <tr>
+                                        <th>User Photo</th>
+                                        <td>
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <img id="PriviewPhotoId" class="w-50 h-50 mb-1 rounded-circle"
+                                                            src="resources/image/user.png">
+                                                        <br>
+                                                        <button id="adduserPhotoBtn" onclick="EditUserPhoto.click()"
+                                                            type="button"
+                                                            class="btn w-80 mb-1 fw-bold d-none btnHover">Select
+                                                            Photo</button><br>
+                                                        <button id="clearuserPhotoBtn" type="button"
+                                                            class="btn w-80 fw-bold d-none btnHover">Clear
+                                                            Photo</button>
+
+                                                        <input
+                                                            onchange="FileValidator(this,'logedUser','userphoto','PriviewPhotoId')"
+                                                            class="d-none" type="file" id="EditUserPhoto">
+                                                        <br>
+                                                    </td>
+                                                    <td>
+                                                        <button class="btn"
+                                                            onclick="adduserPhotoBtn.classList.remove('d-none');clearuserPhotoBtn.classList.remove('d-none');"><i
+                                                                class="fa-solid fa-edit"></i></button>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>User Name</th>
+                                        <td id="tdUserName">
+                                            <input type="text" id="editUserNameId" placeholder="Username" readonly
+                                                disabled class="form-control"
+                                                onkeyup="textValidator(this,'^[A-Za-z]{4,10}$','logedUser','username')">
+                                        </td>
+                                        <td>
+                                            <button class="btn"
+                                                onclick="editUserNameId.removeAttribute('readonly');editUserNameId.removeAttribute('disabled');"><i
+                                                    class="fa-solid fa-edit"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>User Password</th>
+                                        <td id="tduserPassword">
+                                            <input type="password" id="editOldPassword" readonly disabled
+                                                class="form-control" placeholder="Old Password"
+                                                onkeyup="textValidator(this,'^[A-Za-z0-9]{4,15}$','logedUser','oldpassword')"><br>
+                                            <input type="password" id="editNewPassword" class="form-control d-none"
+                                                placeholder="New Password"
+                                                onkeyup="textValidator(this,'^[A-Za-z0-9]{4,15}$','logedUser','newpassword')"><br>
+                                            <input type="password" id="editNewRePassword" class="form-control d-none"
+                                                placeholder="Retype Password" onkeyup="passwordretypeValidator()">
+                                        </td>
+                                        <td>
+                                            <button class="btn"
+                                                onclick="editOldPassword.removeAttribute('readonly');editOldPassword.removeAttribute('disabled');
+                                                editNewPassword.classList.remove('d-none');editNewRePassword.classList.remove('d-none');"><i
+                                                    class="fa-solid fa-edit"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>User Email</th>
+                                        <td id="tdUserEmail">
+                                            <input type="text" id="editUserEmail" placeholder="User Email" readonly
+                                                disabled class="form-control"
+                                                onkeyup="textValidator(this,'^[A-Za-z0-9]{6,20}[@][a-z]{3,6}[.][a-z]{2,3}$','logedUser','email')">
+                                        </td>
+                                        <td>
+                                            <button class="btn"
+                                                onclick="editUserEmail.removeAttribute('readonly');editUserEmail.removeAttribute('disabled');"><i
+                                                    class="fa-solid fa-edit"></i></button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="row mt-4 ">
+                                <div class="col-7">
+                                    <button type="reset" class="btn btnHover"
+                                        onclick="refreshEditUserProfile()"><span><i
+                                                class="fa-solid fa-broom"></i></span>Clear</button>
+                                </div>
+                                <div class="col-5">
+                                    <button type="submit" class="btn btnHover" id="btnSave"
+                                        onclick="saveUpdates()"><span><i class="fa-solid fa-pen"></i></span>Save
+                                        Changes</button>
+                                </div>
+                            </div><br><br>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="">
+                    <div class="row">
+                        <div class="col-4">
+                            <label>User photo :</label>
+                        </div>
+                        <div class="col-8"></div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-4">
+                            <label>User Name :</label>
+                        </div>
+                        <div class="col-8">
+                            <input type="text" id="textUsername" class="form-control " placeholder=" Enter Username">
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-4">
+                            <label>User Password :</label>
+                        </div>
+                        <div class="col-8">
+                            <input type="password" id="textPassword" class="form-control "
+                                placeholder=" Enter Password">
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-4">
+                            <label>User Email :</label>
+                        </div>
+                        <div class="col-8">
+                            <input type="email" id="textUserEmail" class="form-control " placeholder=" Enter Email">
+                        </div>
+                    </div>
+                </div> -->
+            </div><br>
+        </div>
+    </div>
+
+
+
+
+    <div th:replace="~{component::userProfileChangeModal}"></div>
+
+</body>
+
+</html>
